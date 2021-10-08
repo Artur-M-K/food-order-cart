@@ -5,14 +5,18 @@
     margin: auto;
     margin-top: -10rem;
     position: relative;
-    background-color: #383838;
+    background-color: #1A1A19;
     color: white;
     border-radius: 14px;
     padding: 1rem;
     box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
   }
   
   .summary h2 {
     font-size: 2rem;
     margin-top: 0;
+    font-weight: 100;
   }
+

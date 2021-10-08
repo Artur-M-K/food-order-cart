@@ -33,12 +33,12 @@ const MealItemForm = (props) => {
             id: 'amount'+props.id,
             type: 'number',
             min: '1',
-            max: '5',
+            max: '9',
             step: '1',
             defaultValue: '1'
           }}/> 
           <button>Add</button>
-          {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+          {!amountIsValid && <p>Please enter a valid amount (1-9).</p>}
         </form>
     )
 }

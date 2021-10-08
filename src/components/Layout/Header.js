@@ -9,7 +9,6 @@ const Header = (props) => {
   return (
     <>
       <header className={styles.header}>
-        {/* <h1>React Meals</h1> */}
         <div className={styles.name}>
           <img className={styles.logo} src={pizzaLogo} alt="pizza" />
           <h1 className={styles.logoName}>LaTrattoria</h1>

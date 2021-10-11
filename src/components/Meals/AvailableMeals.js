@@ -1,63 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 
 import styles from './AvailableMeals.module.css';
 
-const DUMMY_MEALS = [
-    {
-      id: 'm1',
-      name: 'Pizza Margherita',
-      description: 'Tomato sauce, fresh mozzarella & basil',
-      price: 10.00,
-    },
-    {
-      id: 'm2',
-      name: 'Pizza Diavola',
-      description: 'Tomato sauce, fresh mozzarella, spicy salami & fresh chilli',
-      price: 11.50,
-    },
-    {
-      id: 'm3',
-      name: 'Pizza Americana',
-      description: 'Tomato sauce, fresh mozzarella & pepperoni',
-      price: 11.50,
-    },
-    {
-      id: 'm4',
-      name: 'Pizza Napoletana',
-      description: 'Tomato sauce, fresh mozzarella, capers, anchovies & black olives',
-      price: 12.50,
-    },
-    {
-      id: 'm5',
-      name: 'Pizza Capricciosa',
-      description: 'Tomato sauce, fresh mozzarella, ham, mushrooms, olives, artichokes & egg',
-      price: 14.00,
-    },
-    {
-      id: 'm6',
-      name: 'Pizza Quattro Formaggi',
-      description: 'Tomato sauce, fresh mozzarella, parmesan, gorgonzola & asiago',
-      price: 13.50,
-    },
-    {
-      id: 'm7',
-      name: 'Pizza Vegetariana',
-      description: 'Tomato sauce, fresh mozzarella, aubergines, peppers & courgettes',
-      price: 12.70,
-    },
-    {
-      id: 'm8',
-      name: 'Pizza Rustica',
-      description: 'Tomato sauce, fresh mozzarella, ham, chicken, pepperoni & salami',
-      price: 14.50,
-    },
-  ];
-
 const AvailableMeals = () => {
 
-    const mealsList = DUMMY_MEALS.map((meal) => (
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+
+    const fetchMeals = async () => {
+      const response = await fetch(`https://react-meals-app-ff022-default-rtdb.europe-west1.firebasedatabase.app/meals.json`);
+
+      if (!response.ok) {
+        throw new Error('Something went wrong!!!');
+      }
+
+      const responseData = await response.json();
+      const recivedMeals = [];
+
+      for (const key in responseData) {
+        recivedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price
+        });
+      }
+      setMeals(recivedMeals);
+      setIsLoading(false);
+    };
+    
+      fetchMeals().catch(error => {
+        setIsLoading(false);
+        setError(error.message);
+      });
+  }, []);
+  
+
+    const mealsList = meals.map((meal) => (
         <MealItem 
             id={meal.id}
             key={meal.id} 
@@ -66,6 +50,18 @@ const AvailableMeals = () => {
             price={meal.price}
         />
     ));
+
+    if (isLoading) {
+      return <section className={styles.MealsLoading}>
+        <p>Loading...</p>
+      </section>
+    }
+
+    if (error) {
+      return <section className={styles.MealsError}>
+      <p>{error}</p>
+    </section>
+    }
 
     return (
         <section className={styles.meals}>

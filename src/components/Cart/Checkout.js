@@ -3,7 +3,7 @@ import styles from "./Checkout.module.css";
 
 const isEmpty = (value) => value.trim() === '';
 const isNot5Chars = (value) => value.trim().length !== 7;
-const isNotPhoneNumber = (value) => value.trim().length !== 9;
+const isNotPhoneNumber = (value) => value.trim().length !== 10;
 
 const Checkout = (props) => {
 
@@ -78,7 +78,7 @@ const Checkout = (props) => {
       </div>
       <div className={postalCodeStyles}>
         <label htmlFor="postal">Postal Code</label>
-        <input type="text" id="postal" ref={postalCodeRef} />
+        <input type="text" id="postal" ref={postalCodeRef} placeholder="Must be 7 chars"/>
         {!formInputValidity.postalCode && <p>Please enter a valid postal code!</p>}
       </div>
       <div className={cityStyles}>
@@ -92,8 +92,9 @@ const Checkout = (props) => {
           type="tel"
           id="phone"
           name="phone"
-          pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
           ref={phoneRef}
+          placeholder="xxxxxxxxxx"
         />
         {!formInputValidity.phone && <p>Please enter a valid phone number!</p>}
       </div>

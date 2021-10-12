@@ -45,3 +45,8 @@
     background-color: #8a2b06;
     color: white;
   }
+
+  .invalid {
+    text-align: center;
+    color: #ca3e51;
+  }

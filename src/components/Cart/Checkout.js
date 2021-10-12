@@ -64,7 +64,6 @@ const Checkout = (props) => {
   const cityStyles = `${styles.control} ${formInputValidity.city ? '' : styles.invalid}`;
   const phoneStyles = `${styles.control} ${formInputValidity.phone ? '' : styles.invalid}`;
 
-    console.log(formInputValidity)
   return (
     <form onSubmit={confirmHandler}>
       <div className={nameStyles}>

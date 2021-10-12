@@ -25,16 +25,9 @@
   }
   
   .badge {
-    background-color: #d60000;
-    padding: 0.25rem 1rem;
-    border-radius: 25px;
-    margin-left: 1rem;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.2rem;
     font-weight: bold;
-  }
-  
-  .button:hover .badge,
-  .button:active .badge {
-    background-color: #3f0000;
   }
   
   .bump {
@@ -46,13 +39,13 @@
       transform: scale(1);
     }
     10% {
-      transform: scale(0.98);
+      transform: scale(.98);
     }
     30% {
-      transform: scale(0.96);
+      transform: scale(.95);
     }
     50% {
-      transform: scale(0.98);
+      transform: scale(.98);
     }
     100% {
       transform: scale(1);

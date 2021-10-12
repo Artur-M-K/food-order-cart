@@ -23,19 +23,18 @@
   
   .actions button {
     font: inherit;
+    color: #8a2b06;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #8a2b06;
-    padding: 0.5rem 2rem;
+    border: 1px solid transparent;
     border-radius: 25px;
+    padding: 0.5rem 2rem; 
     margin-left: 1rem;
   }
   
   .actions button:hover,
   .actions button:active {
-    background-color: #5a1a01;
-    border-color: #5a1a01;
-    color: white;
+    border: 1px solid #8a2b06;
   }
   
   .actions .button--alt {

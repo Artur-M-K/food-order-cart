@@ -15,7 +15,7 @@ const HeaderCartButton = (props) => {
         return curNumber + item.amount;
     }, 0);
 
-    const btnClasses = `${styles.button} ${btnIsHighlighted ? styles.bump: ''}`;
+    const btnClasses = `${styles.button} ${btnIsHighlighted ? styles.bump : ''}`;
 
     useEffect(() => {
         if (items.length === 0) {
